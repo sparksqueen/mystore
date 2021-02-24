@@ -1,7 +1,7 @@
 import ItemCount from './ItemCount';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Jumbotron , Container , Image , Row , Col , Button } from 'react-bootstrap';
-import { NavLink , Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const ItemDetail = ({productos}) => {
@@ -9,8 +9,8 @@ const ItemDetail = ({productos}) => {
   const stock = productos.stock;
   const precio = productos.precio;
 
-
   const [redireccionCart, SetRedireccion] = useState(false);
+
   const onAdd = (contador) =>{
     const valor = precio * contador;
       

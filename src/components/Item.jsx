@@ -13,8 +13,8 @@ const Item = ({producto}) => {
 <NavLink to={`/item/${producto.id}`}>
     <Col className="mb-4" >
         <Card  >
-            <div style={{height: 200, width: "auto"}}>
-            <Card.Img style={{maxHeight: 200}} variant="top" src={producto.img} />
+            <div style={{height: 200}}>
+            <Card.Img className="d-block mx-auto" style={{maxHeight: 200, width: "auto", maxWidth: "100%"}} variant="top" src={producto.img} />
             </div>
             <Card.Body>
                 <Card.Title >{producto.titulo}</Card.Title> 
