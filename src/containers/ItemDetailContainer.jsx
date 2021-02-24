@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ItemDetail from '../components/ItemDetail';
 import Listado from "../mocks/Listado";
 import { useParams } from 'react-router-dom';
+import ItemCount from '../components/ItemCount';
 
 
 
@@ -13,6 +14,7 @@ function ItemDetailContainer() {
 
     const [productos, setProductos] = useState([]);
     const { id } = useParams();
+
 
   
         useEffect(() => {

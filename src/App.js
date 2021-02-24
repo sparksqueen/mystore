@@ -11,26 +11,31 @@ import {
   import Cart from './components/Cart';
 import ItemDetailContainer from './containers/ItemDetailContainer';
 import Slider from './components/Slider';
+import CartContext from './context/CartContext';
 
 
 
 function App() {
     return(
      <Router>
+         <CartContext>
             <Navigation/>
         <Switch>
-            <Route exact path="/">
-                <Slider/>
-                <ItemListContainer />
-            </Route>
-            <Route exact component={ItemDetailContainer} path="/item/:id" />                
-            <Route path="/categoria/:nombre"> 
-                <ItemListContainer />
-            </Route>    
-            <Route path="/cart">
-                <Cart/>
-            </Route>
+            
+                <Route exact path="/">  
+                    <Slider/>
+                    <ItemListContainer />
+                </Route>
+                <Route exact component={ItemDetailContainer} path="/item/:id" />                
+                <Route path="/categoria/:nombre"> 
+                    <ItemListContainer />
+                </Route>    
+                <Route path="/cart">
+                    <Cart/>
+                </Route>
+
         </Switch>
+         </CartContext>
     </Router>
     );
 }

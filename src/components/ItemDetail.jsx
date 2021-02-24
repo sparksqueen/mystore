@@ -1,12 +1,28 @@
 import ItemCount from './ItemCount';
-import { Jumbotron , Container , Image , Row , Col } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import { Jumbotron , Container , Image , Row , Col , Button } from 'react-bootstrap';
+import { NavLink , Link } from 'react-router-dom';
 
 
 const ItemDetail = ({productos}) => {
+
+  const stock = productos.stock;
+  const precio = productos.precio;
+
+
+  const [redireccionCart, SetRedireccion] = useState(false);
+  const onAdd = (contador) =>{
+    const valor = precio * contador;
+      
+    alert(`Usted ha añadido ${contador} productos a su carrito. Por un total de ${valor} pesos`);
+    console.log(`Usted ha añadido ${contador} productos a su carrito. Por un total de ${valor} pesos`);
+     SetRedireccion(true);
+  }
   
     return (
 
         <>
+
         <Jumbotron fluid>
             <Container>
             <Row>
@@ -18,7 +34,8 @@ const ItemDetail = ({productos}) => {
   <h1>{productos.precio}</h1> 
   <p>{productos.descripcion}</p>
 
-  <ItemCount stock={productos.stock} precio={productos.precio}/>
+  {redireccionCart ? <Button as={NavLink} to="/cart">Terminar Compra</Button> : 
+  <ItemCount stock={productos.stock} precio={productos.precio} onAdd={onAdd}/>}
     </Col>
     </Row>
 
