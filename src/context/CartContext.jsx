@@ -17,7 +17,7 @@ function CartContext({ children }) {
   };
 
   const isInCart = (id) => {
-    return product.findIndex((prod) => prod.id === id) >= 0 ? true : false;
+    return product.findIndex((prod) => prod.id === id);
   };
 
   return (
