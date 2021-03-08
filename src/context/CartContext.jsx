@@ -7,17 +7,37 @@ console.log(cartContext);
 function CartContext({ children }) {
   const [product, setProduct] = useState([]);
 
+  const clearCart = (productos) => {
+    setProduct([]);
+  };
+
+  /*  const deleteFromCart = (product) => {
+    let newProducts = product.filter()
+    });
+    setProduct(newProducts);
+  }; */
+
   const addCart = (productos) => {
     if (isInCart(productos.productos.id === -1)) {
-      setProduct(productos);
-    } else {
-      const newProduct = [...product, { productos: productos }];
+      let newProduct = [productos, ...product];
       setProduct(newProduct);
+    } else {
+      let findItem = product.find(
+        (item) => item.productos.id === productos.productos.id
+      );
+
+      if (findItem) {
+        let newQuantity = findItem.quantity + productos.quantity;
+        let index = product.indexOf(findItem);
+        let newCart = [...product];
+        newCart[index].quantity = newQuantity;
+        setProduct(newCart);
+      }
     }
   };
 
   const isInCart = (id) => {
-    return product.findIndex((prod) => prod.id === id) >= 0 ? true : false;
+    return product.findIndex((item) => item.id === id);
   };
 
   return (
@@ -25,6 +45,7 @@ function CartContext({ children }) {
       value={{
         product,
         addCart,
+        clearCart,
       }}
     >
       {children}
