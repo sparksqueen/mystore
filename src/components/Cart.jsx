@@ -20,6 +20,7 @@ const Cart = () => {
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th></th>
               <th>Producto</th>
               <th>Cantidad</th>
               <th>Precio Unitario</th>

@@ -10,12 +10,12 @@ function CartContext({ children }) {
   const clearCart = (productos) => {
     setProduct([]);
   };
-
-  /*  const deleteFromCart = (product) => {
-    let newProducts = product.filter()
+  const deleteFromCart = (id) => {
+    const newProducts = product.filter((item) => {
+      return item.productos.id !== id;
     });
     setProduct(newProducts);
-  }; */
+  };
 
   const addCart = (productos) => {
     if (isInCart(productos.productos.id === -1)) {
@@ -46,6 +46,7 @@ function CartContext({ children }) {
         product,
         addCart,
         clearCart,
+        deleteFromCart,
       }}
     >
       {children}

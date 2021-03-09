@@ -14,7 +14,7 @@ const Item = ({ producto }) => {
                 className="d-block mx-auto"
                 style={{ maxHeight: 200, width: "auto", maxWidth: "100%" }}
                 variant="top"
-                src={producto.img}
+                src={producto.image}
               />
             </div>
             <Card.Body>

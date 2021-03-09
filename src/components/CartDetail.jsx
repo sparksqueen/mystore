@@ -1,13 +1,10 @@
 import { useContext } from "react";
 import { cartContext } from "../context/CartContext";
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 
 const CartDetail = () => {
-  const { product, setProduct } = useContext(cartContext);
+  const { product, setProduct, deleteFromCart } = useContext(cartContext);
 
-  /* const onDelete = () => {
-    deleteFromCart();
-  }; */
   const itemTotal = (product) => {
     return product.productos.precio * product.quantity;
   };
@@ -18,32 +15,41 @@ const CartDetail = () => {
     }
     return total;
   };
+  if (product.length > 0) {
+    return (
+      <>
+        {product.map((product) => {
+          return (
+            <tr>
+              <td>
+                <Image src={product.productos.image} style={{ width: 50 }} />
+              </td>
+              <td>{product.productos.titulo}</td>
+              <td>{product.quantity}</td>
+              <td>{product.productos.precio}</td>
+              <td>{itemTotal(product)}</td>
+              <td>
+                <Button onClick={() => deleteFromCart(product.productos.id)}>
+                  Eliminar
+                </Button>
+              </td>
+            </tr>
+          );
+        })}
 
-  return (
-    <>
-      {product.map((product) => {
-        return (
-          <tr>
-            <td>{product.productos.titulo}</td>
-            <td>{product.quantity}</td>
-            <td>{product.productos.precio}</td>
-            <td>{itemTotal(product)}</td>
-            <td>
-              <Button>Eliminar</Button>
-            </td>
-          </tr>
-        );
-      })}
-
-      <td></td>
-      <td></td>
-      <td>
-        <b>Precio Final</b>
-      </td>
-      <td>{sumaTotal(product)}</td>
-      <td></td>
-    </>
-  );
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <b>Precio Final</b>
+        </td>
+        <td>{sumaTotal(product)}</td>
+        <td></td>
+      </>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default CartDetail;

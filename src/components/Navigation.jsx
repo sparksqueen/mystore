@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Logo from "../fakeml.png";
 import CartWidget from "./CartWidget";
 import { NavLink, Link } from "react-router-dom";
-import Categorias from "../mocks/Categorias";
+import CategoryContainer from "../containers/CategoryContainer";
 
 function Navigation() {
   return (
@@ -24,7 +24,7 @@ function Navigation() {
 
         <Nav className="mr-auto">
           <NavDropdown title="Categorias" id="nav-dropdown">
-            <Categorias />
+            <CategoryContainer />
           </NavDropdown>
         </Nav>
         <Form inline>
