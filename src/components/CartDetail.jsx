@@ -3,7 +3,7 @@ import { cartContext } from "../context/CartContext";
 import { Button } from "react-bootstrap";
 
 const CartDetail = () => {
-  const { product, setProduct } = useContext(cartContext);
+  const { product } = useContext(cartContext);
 
   /* const onDelete = () => {
     deleteFromCart();

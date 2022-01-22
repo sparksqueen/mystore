@@ -23,7 +23,7 @@ function CartContext({ children }) {
       setProduct(newProduct);
     } else {
       let findItem = product.find(
-        (item) => item.productos.id === productos.productos.id
+        (item) => item.productos.id === productos.productos.id,
       );
 
       if (findItem) {

@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 
-const ItemCount = ({ onAdd }) => {
-  const [contador, setContador] = useState(1);
-
+const ItemCount = ({ onAdd, contador, setContador }) => {
   const handlerOnAdd = () => {
     onAdd(contador);
   };

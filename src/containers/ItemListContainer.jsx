@@ -4,12 +4,14 @@ import Row from "react-bootstrap/Row";
 import Listado from "../mocks/Listado";
 import ItemList from "../components/ItemList";
 import { useParams } from "react-router-dom";
+import { getFirestore } from "../firebase/index";
 
 function ItemListContainer() {
   const [productos, setProductos] = useState([]);
+
   const { nombre } = useParams();
 
-  useEffect(() => {
+  /*useEffect(() => {
     const myPromise = new Promise((resolve, reject) => {
       resolve(Listado);
     });
@@ -22,6 +24,29 @@ function ItemListContainer() {
       });
     } else {
       myPromise.then((result) => setProductos(result));
+    }
+  }, [productos]);*/
+
+  useEffect(() => {
+    const bd = getFirestore();
+    const itemCollection = bd.collection("items");
+    if (nombre) {
+      itemCollection.get().then((value) => {
+        let aux = value.docs.map((e) => {
+          return { ...e.data(), id: e.id };
+        });
+        let filtro = aux.filter((e) => {
+          return e.marca === nombre;
+        });
+        setProductos(filtro);
+      });
+    } else {
+      itemCollection.get().then((value) => {
+        let aux = value.docs.map((e) => {
+          return { ...e.data(), id: e.id };
+        });
+        setProductos(aux);
+      });
     }
   }, [productos]);
 

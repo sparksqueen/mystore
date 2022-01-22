@@ -20,6 +20,14 @@ const Slider = () => {
           alt="Second slide"
         />
       </Carousel.Item>
+
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://http2.mlstatic.com/optimize/o:f_webp/resources/deals/exhibitors_resources/mla-home-desktop-slider-picture-1c148b68-052e-45cb-9ae4-f4053bb814aa.jpg"
+          alt="Second slide"
+        />
+      </Carousel.Item>
     </Carousel>
   );
 };

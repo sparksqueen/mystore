@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/Navigation.jsx";
 import ItemListContainer from "./containers/ItemListContainer.jsx";
